@@ -1,0 +1,17 @@
+{extends layout.latte}
+
+{block title}Login{/block}
+
+{block body}
+    <div id="login-background">
+        <h1>Login</h1>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit">
+        </form>
+        {if isset($message)}
+            <h1>{$message}</h1>
+        {/if}
+    </div>
+{/block}

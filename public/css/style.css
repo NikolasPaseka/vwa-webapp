@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+}
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+#navbar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: #22252D;
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#navbar ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: #3a0ca3;
+    padding: 30px 10px;
+    margin: 40px auto; 
+    width: 60%;
+    text-align: center;
+}
+
+#main {
+    /* position: relative; */
+    margin-left: 250px;
+}
+
+.slide-image {
+    height: 100vh;
+    background-image: url("../images/background-2.jpg");
+    background-size: cover;
+}
+
+/* login page */
+#login-background {
+    width: 60vh;
+    height: 50vh;
+    background-color: #22252D;
+    margin: 0;
+    position: absolute;
+    top: 25%;
+    left: 40%;
+}
+
+#login-background input{
+    display: block;
+    margin: 20px auto;
+    padding: 25px 70px;
+}

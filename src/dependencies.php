@@ -21,11 +21,10 @@ $container['logger'] = function ($c) {
 
 //database
 $container['db'] = function ($c) {
-    // $db = $c['settings']['db'];
-    // $pdo = new PDO('sqlite:../database/persons.db');
-    // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    // $pdo->query("SET NAMES 'utf8'");
+    $db = $c['settings']['db'];
+    $pdo = new PDO('sqlite:../database/colonization.db');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
 
