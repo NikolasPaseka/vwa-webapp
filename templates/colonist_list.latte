@@ -1,0 +1,27 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        <table class="list_table">
+            <thead>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Profile</th>
+            </thead>
+            <tbody>
+            {$colonists}
+                {foreach $colonists as $colonist}
+                    <tr>
+                        <td>{$colonist['id_colonist']}</td>
+                        <td>{$colonist['firstname']}</td>
+                        <td>{$colonist['lastname']}</td>
+                        <td><button><a href="{link colonist_profile, [id => $colonist['id_colonist']]}">Profile</a>
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+{/block}

@@ -1,6 +1,37 @@
 * {
     margin: 0;
+    padding: 0;
 }
+
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+}
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #167a96;
+}
+
+main {
+    margin-left: 15rem;
+    background: linear-gradient(to right, #42275a, #734b6d);
+    height: 100vh;
+}
+
+/* #main {
+    background: linear-gradient(to right, #42275a, #734b6d);
+    margin-left: 250px;
+    height: 100vh;
+} */
+
 h1 {
     font-family: 'Orbitron', sans-serif;
     color: white;
@@ -8,32 +39,97 @@ h1 {
     text-align: center;
 }
 
+h2, p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+    padding: 10px;
+}
+
+i {
+    margin: 8px;
+}
+
 #navbar {
     position: fixed;
-    width: 250px;
-    height: 100%;
+    width: 15rem;
+    height: 100vh;
     background-color: #22252D;
+}
+
+@media only screen and (max-width: 800px) {
+    #navbar {
+        width: 100%;
+        position: relative;
+        height: 40vh;
+    }
+
+    #navbar ul li {
+        margin: 20px 0;
+    }
+
+    main {
+        margin-left: 0;
+    }
 }
 
 #navbar ul {
     list-style-type: none;
+    display: flex;
     padding: 0;
+    margin: 0;
+    height: 100%;
+    flex-direction: column;
+    align-content: center;
+
+}
+
+#navbar ul li {
+    margin: 10px 15px;
+}
+
+#navbar ul li:first-child {
+    background-color: #15161b;
+    margin: 0;
+}
+
+
+#navbar ul li:last-child {
+    margin: 0;
+    margin-top: auto;
+    width: 100%;
 }
 
 #navbar ul li a {
-    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
     text-decoration: none;
     color: white;
-    background-color: #3a0ca3;
-    padding: 30px 10px;
-    margin: 40px auto; 
-    width: 60%;
-    text-align: center;
 }
 
-#main {
-    /* position: relative; */
-    margin-left: 250px;
+#navbar ul li a:hover{
+    color: #167a96;
+    /* color: #227288; */
+}
+
+.log_button {
+    text-align: center;
+    padding: 10px;
+    background-color: #15161b;
+}
+
+.log_button a{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.log_button a:hover{
+    color: #5a1bec;
 }
 
 .slide-image {
@@ -42,19 +138,113 @@ h1 {
     background-size: cover;
 }
 
+table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+td:nth-of-type(1) {
+    font-weight: bold;
+}
+
+td:nth-of-type(2) {
+    width: 70%;
+}
+
 /* login page */
 #login-background {
     width: 60vh;
-    height: 50vh;
-    background-color: #22252D;
+    height: 40%;
+    background-color: white;
+    border-radius: 10px;
     margin: 0;
     position: absolute;
     top: 25%;
     left: 40%;
 }
 
-#login-background input{
+#login-background h1 {
+    color: black;
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid silver;
+}
+
+.form_input {
     display: block;
     margin: 20px auto;
-    padding: 25px 70px;
+    width: 75%;
+    padding: 25px 0;
+    text-align: center;
+}
+
+/* colonist profile page */
+#profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile_block {
+    background-color: white;
+    width: 350px;
+    border-radius: 10px;
+    max-height: 25%;
+}
+
+.profile_block:nth-of-type(2) {
+    width: 50%;
+    height: 50%;
+    max-height: 50%;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    #profile {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .profile_block {
+        width: 50%;
+    }
+    
+    .profile_block:nth-of-type(2) {
+        width: 90%;
+        max-height: auto;
+    }
+}
+
+.profile_block h2 {
+    text-align: center;
+}
+
+.profile_image {
+    margin: 5% auto;
+    display: block;
+    width: 25%;
+}
+
+/* colonist list */
+.list_background {
+    background-color: white;
+    width: 90%;
+    padding: 15px;
+    margin: auto;
+    position: relative;
+    top: 5%;
+    border-radius: 10px;
 }

@@ -4,37 +4,43 @@
     <meta charset="utf-8">
     <title>{include title}</title>
     <link rel="stylesheet" href="{$basePath}/css/style.css">
+    
+    <script src="https://kit.fontawesome.com/a6c2ca071f.js" crossorigin="anonymous"></script>
+
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {ifset meta}{include meta}{/ifset}
 </head>
 <body>
-    <main>
     <nav id="navbar">
-        <h1>Proxima B</h1>
         <ul>
-            <li><a href="{link index}">Domovská stránka</a></li>
-            <li><a href="#">Prohlídka droidů</a></li>
-            <li><a href="#">Seznam kolonistů</a></li>
-            <li><a href="#">Seznam základen</a></li>
-        </ul>
-        <p>
-            <a href="{link login}">Přihlásit se</a>
-        </p>
-        {if isset($logged_colonist)}
-            <h1>{$logged_colonist['firstname']}</h1>
-            {if $logged_colonist['authorization'] == 'majorplanet'}
-                <h1>cistej magor</h1>
-                {else}
-                    <h1>no tak to jsem nevidel</h1>
+            <li><h1>Proxima B</h1></li>
+            <li><a href="{link index}"><i class="fas fa-rocket"></i>Home page</a></li>
+             {if isset($logged_colonist)}
+                <li><a href="#"><i class="fas fa-robot"></i>Droids</a></li>
+                <li><a href="{link colonist_all}"><i class="fas fa-users"></i>Colonists</a></li>
+                <li><a href="#"><i class="fas fa-hotel"></i>Habitats</a></li>
             {/if}
-        {/if}
+            {if !isset($logged_colonist)}
+            <li><div class="log_button">
+                <a href="{link login}">Log in</a></li>
+            </div>
+            {else}
+            <li><div class="log_button">
+                    <a href="{link logout}">Log out</a>
+                    <a href="{link colonist_profile, [id => $logged_colonist['id_colonist']]}">{$logged_colonist['firstname']}</a>
+                </div></li>
+
+            {/if}
+        </ul>
     </nav>
-    <div id="main">
+    <main>
         {include body}
-    </div>
     </main>
 </body>
 </html>
