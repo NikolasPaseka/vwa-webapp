@@ -3,15 +3,34 @@
 {block title}Login{/block}
 
 {block body}
+    <style>
+        #navbar {
+           visibility: hidden; 
+        }
+
+        @media only screen and (max-width: 800px) {
+            #navbar {
+                position: fixed;
+            }
+
+            main {
+                margin-left: 0;
+            }
+        }
+
+        main {
+            margin-left: 0;
+        }
+    </style>
     <div id="login-background">
         <h1>Login</h1>
         <form method="POST">
             <input type="text" class="form_input" name="username" placeholder="Username">
             <input type="password" class="form_input" name="password" placeholder="Password">
-            <input type="submit">
+            <input type="submit" class="form_input" value="Submit">
         </form>
         {if isset($message)}
-            <h1>{$message}</h1>
+            <h2>{$message}</h2>
         {/if}
     </div>
 {/block}

@@ -1,0 +1,30 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        <table id="list_table">
+            <thead>
+                <th><i class="fas fa-list"></i>Droid ID</th>
+                <th><i class="fas fa-robot"></i>Model</th>
+                <th><i class="fas fa-fill-drip"></i>Color</th>
+                <th><i class="fas fa-clipboard-list"></i>Class</th>
+                <th><i class="fas fa-tools"></i>Condition</th>
+                <th><i class="fas fa-coins"></i>Price</th>
+            </thead>
+            <tbody>
+                {foreach $droids as $droid}
+                    <tr>
+                        <td>{$droid['id_droid']}</td>
+                        <td>{$droid['model']}</td>
+                        <td>{$droid['color']}</td>
+                        <td>{$droid['class']}</td>
+                        <td>{$droid['condition']}</td>
+                        <td>{$droid['price']}</td>
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+{/block}

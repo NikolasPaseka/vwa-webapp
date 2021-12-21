@@ -1,0 +1,22 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        <table id="droid_table">
+            <tbody>
+                {foreach $droids as $droid}
+                    <tr>
+                        <td><img class="droid_image" src="{$basePath}/images/droids/{$droid['model']}.png"></td>
+                        <td>
+                            <form method="POST">
+                                <input type="submit" name="model" value="{$droid['model']}">
+                            </form>
+                        </td>
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+{/block}

@@ -22,8 +22,11 @@ body::-webkit-scrollbar-thumb {
 
 main {
     margin-left: 15rem;
-    background: linear-gradient(to right, #42275a, #734b6d);
-    height: 100vh;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(76,9,108,1) 50%, rgba(2,0,36,1) 100%);
+    height: auto;
+    min-height: 100vh;
+    background-size: cover;
+    overflow: auto;
 }
 
 /* #main {
@@ -126,6 +129,7 @@ i {
     color: white;
     text-decoration: none;
     display: block;
+    padding: 5px;
 }
 
 .log_button a:hover{
@@ -155,24 +159,15 @@ th, td {
     text-align: left;
 }
 
-td:nth-of-type(1) {
-    font-weight: bold;
-}
-
-td:nth-of-type(2) {
-    width: 70%;
-}
-
 /* login page */
 #login-background {
-    width: 60vh;
-    height: 40%;
+    width: 550px;
+    height: 460px;
     background-color: white;
     border-radius: 10px;
-    margin: 0;
-    position: absolute;
-    top: 25%;
-    left: 40%;
+    position:absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
 }
 
 #login-background h1 {
@@ -182,12 +177,30 @@ td:nth-of-type(2) {
     border-bottom: 1px solid silver;
 }
 
+#login-background h2 {
+    text-align: center;
+}
+
 .form_input {
     display: block;
     margin: 20px auto;
     width: 75%;
     padding: 25px 0;
     text-align: center;
+    border-radius: 10px;
+    border: black 1px solid;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+}
+
+#login-background input[type=submit] {
+    background-color: #22252D;
+    color: white;
+}
+
+
+#login-background input[type=submit]:hover {
+    background-color: #14796b;
 }
 
 /* colonist profile page */
@@ -202,13 +215,19 @@ td:nth-of-type(2) {
     background-color: white;
     width: 350px;
     border-radius: 10px;
-    max-height: 25%;
 }
 
 .profile_block:nth-of-type(2) {
     width: 50%;
-    height: 50%;
-    max-height: 50%;
+    padding: 20px 15px 60px 15px;
+}
+
+#profile_table td:nth-of-type(1) {
+    font-weight: bold;
+}
+
+#profile_table td:nth-of-type(2) {
+    width: 70%;
 }
 
 
@@ -241,10 +260,59 @@ td:nth-of-type(2) {
 /* colonist list */
 .list_background {
     background-color: white;
-    width: 90%;
-    padding: 15px;
-    margin: auto;
-    position: relative;
+    width: 75%;
+    padding: 50px 15px;
+    margin: 25px auto;
     top: 5%;
     border-radius: 10px;
+}
+
+#list_table a {
+    font-size: 2em;
+    color: rgba(2,0,36,1);
+}
+
+#list_table tbody tr:nth-of-type(odd) {
+    background-color: #E6E6FA;
+}
+
+.filter_button_box {
+    display: flex;
+    margin: auto;
+    width: 75%;
+    padding: 20px 15px;
+    justify-content: space-evenly;
+}
+
+.filter_button {
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.filter_button:hover {
+    background-color: #167a96;
+    color: white;
+    cursor: pointer;
+}
+
+#list_table a:hover {
+    font-size: 2em;
+    color: #167a96;
+}
+
+/* droid list */
+#droid_table td {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+.droid_image {
+    width: 180px;
+    margin: auto;
 }

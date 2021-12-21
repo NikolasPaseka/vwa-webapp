@@ -21,22 +21,13 @@
         <ul>
             <li><h1>Proxima B</h1></li>
             <li><a href="{link index}"><i class="fas fa-rocket"></i>Home page</a></li>
-             {if isset($logged_colonist)}
-                <li><a href="#"><i class="fas fa-robot"></i>Droids</a></li>
-                <li><a href="{link colonist_all}"><i class="fas fa-users"></i>Colonists</a></li>
+                <li><a href="{link colonist_list}"><i class="fas fa-users"></i>Colonists</a></li>
                 <li><a href="#"><i class="fas fa-hotel"></i>Habitats</a></li>
-            {/if}
-            {if !isset($logged_colonist)}
+                <li><a href="{link droid_list}"><i class="fas fa-robot"></i>Droids</a></li>
             <li><div class="log_button">
-                <a href="{link login}">Log in</a></li>
-            </div>
-            {else}
-            <li><div class="log_button">
-                    <a href="{link logout}">Log out</a>
-                    <a href="{link colonist_profile, [id => $logged_colonist['id_colonist']]}">{$logged_colonist['firstname']}</a>
-                </div></li>
-
-            {/if}
+                <a href="{link colonist_profile, [id => $logged_colonist['id_colonist']]}">{$logged_colonist['username']}</a>
+                <a href="{link logout}"><i class="fas fa-sign-out-alt"></i>Log out</a>
+            </div></li>
         </ul>
     </nav>
     <main>

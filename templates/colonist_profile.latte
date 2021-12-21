@@ -10,8 +10,8 @@
     </div>
 
     <div class="profile_block">
-        <h2><i class="fa-solid fa-barcode"></i>General Information</h2>
-        <table>
+        <h2><i class="fas fa-info-circle"></i>General Information</h2>
+        <table id="profile_table">
             <tr>
                 <td>ID</td>
                 <td>{$colonist['id_colonist']}</td>
@@ -39,6 +39,10 @@
             <tr>
                 <td>Habitat</td>
                 <td>{$colonist['name']}</td>
+            </tr>
+            <tr>
+                <td>Credits<i class="fas fa-coins"></i></td>
+                <td>{$colonist['credits']}</td>
             </tr>
         </table>
     </div>
