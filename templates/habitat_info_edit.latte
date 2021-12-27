@@ -1,0 +1,34 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        {if isset($message)}
+            <div class="message">{$message}</div>
+        {/if}
+        <form method="post">
+            <div id="edit_profile_box">
+                <div class="input_box">
+                    <label>Name</label>
+                    <input type="text" name="name" value="{$habitat['name']}">
+                </div>
+                <div class="input_box">
+                    <label>Coordinate X</label>
+                    <input type="text" name="coordinate_x" value="{$habitat['coordinate_x']}">
+                </div>
+                <div class="input_box">
+                    <label>Coordinate Y</label>
+                    <input type="text" name="coordinate_y" value="{$habitat['coordinate_y']}">
+                </div>
+                <div class="input_box">
+                    <label>Size</label>
+                    <input type="text" name="size" value="{$habitat['size']}">
+                </div>
+                <div class="input_box">
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+{/block}

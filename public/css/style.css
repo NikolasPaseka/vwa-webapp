@@ -9,7 +9,7 @@
 }
 
 body::-webkit-scrollbar {
-    width: 0.25rem;
+    width: 0.5rem;
 }
 
 body::-webkit-scrollbar-track {
@@ -17,23 +17,20 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background: #167a96;
+    background: #852525;
 }
 
 main {
     margin-left: 15rem;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(76,9,108,1) 50%, rgba(2,0,36,1) 100%);
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(76,9,108,1) 50%, rgba(2,0,36,1) 100%); */
+    background: rgb(1,14,40);
+    background: linear-gradient(90deg, rgba(1,14,40,1) 0%, rgba(2,15,42,1) 49%, rgba(4,30,84,1) 100%);
+
     height: auto;
     min-height: 100vh;
     background-size: cover;
     overflow: auto;
 }
-
-/* #main {
-    background: linear-gradient(to right, #42275a, #734b6d);
-    margin-left: 250px;
-    height: 100vh;
-} */
 
 h1 {
     font-family: 'Orbitron', sans-serif;
@@ -54,6 +51,19 @@ i {
     margin: 8px;
 }
 
+.message {
+    font-family: 'Open Sans', sans-serif;
+    color: #852525;
+    font-size: 2em;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+    border-color: #852525;
+    box-shadow: 0 0 10px #852525;
+}
+
 #navbar {
     position: fixed;
     width: 15rem;
@@ -65,7 +75,7 @@ i {
     #navbar {
         width: 100%;
         position: relative;
-        height: 40vh;
+        height: auto;
     }
 
     #navbar ul li {
@@ -77,7 +87,7 @@ i {
     }
 }
 
-#navbar ul {
+#navbar_ul {
     list-style-type: none;
     display: flex;
     padding: 0;
@@ -88,34 +98,59 @@ i {
 
 }
 
-#navbar ul li {
+#navbar_ul > li {
     margin: 10px 15px;
 }
 
-#navbar ul li:first-child {
+#navbar_ul > li:first-child {
     background-color: #15161b;
     margin: 0;
 }
 
 
-#navbar ul li:last-child {
+#navbar_ul > li:last-child {
     margin: 0;
     margin-top: auto;
     width: 100%;
 }
 
-#navbar ul li a {
+.navbar_link {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.3em;
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }
 
-#navbar ul li a:hover{
-    color: #167a96;
-    /* color: #227288; */
+.navbar_sublink {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: white;
 }
+
+.navbar_link:hover, .navbar_sublink:hover, #navbar_ul > li a:hover{
+    color: #852525;
+}
+
+
+#dropdown_content1 {
+    display: none;
+    list-style-type: none;
+}
+
+#dropdown_content2 {
+    display: none;
+    list-style-type: none;
+    color: blue;
+}
+
+/* .dropdown_button:hover .dropdown_content {
+    display: block;
+    padding: 15px;
+} */
 
 .log_button {
     text-align: center;
@@ -125,7 +160,7 @@ i {
 
 .log_button a{
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.8em;
+    font-size: 1.3em;
     color: white;
     text-decoration: none;
     display: block;
@@ -168,6 +203,7 @@ th, td {
     position:absolute;
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
+    border: 1px solid black; 
 }
 
 #login-background h1 {
@@ -200,15 +236,20 @@ th, td {
 
 
 #login-background input[type=submit]:hover {
-    background-color: #14796b;
+    background-color: #852525;
 }
 
 /* colonist profile page */
-#profile {
+.profile {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
+    margin-top: 10%;
+}
+
+.profile:nth-of-type(2) {
+    margin-top: 20px;
 }
 
 .profile_block {
@@ -222,17 +263,25 @@ th, td {
     padding: 20px 15px 60px 15px;
 }
 
-#profile_table td:nth-of-type(1) {
-    font-weight: bold;
+#credits_box {
+    display: none;
 }
 
-#profile_table td:nth-of-type(2) {
+.profile_table td:nth-of-type(1) {
+    font-weight: bold;
+    width: 40%;
+}
+
+.profile_table td:nth-of-type(2) {
     width: 70%;
 }
 
+.profile_table i {
+    width: 20px;
+}
 
 @media only screen and (max-width: 1200px) {
-    #profile {
+    .profile {
         flex-direction: column;
         justify-content: space-evenly;
     }
@@ -257,14 +306,46 @@ th, td {
     width: 25%;
 }
 
+/* colonist profile edit */
+#edit_profile_box {
+    width: 95%;
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input_box {
+    flex: 0 0 45%;
+    margin: 20px 0;
+}
+
+.input_box input {
+    padding: 20px;
+    width: 90%;
+}
+
+.input_box select {
+    padding: 20px;
+    width: 100%;
+}
+
+.input_box label {
+    display: block;
+}
+
 /* colonist list */
 .list_background {
     background-color: white;
     width: 75%;
-    padding: 50px 15px;
+    padding: 0 0 40px 0;
     margin: 25px auto;
-    top: 5%;
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+.list_background h2{
+    text-align: center;
+    padding: 30px;
 }
 
 #list_table a {
@@ -273,35 +354,57 @@ th, td {
 }
 
 #list_table tbody tr:nth-of-type(odd) {
-    background-color: #E6E6FA;
+    background-color: #e4eefd;
 }
 
-.filter_button_box {
-    display: flex;
-    margin: auto;
+#filter_box {
     width: 75%;
-    padding: 20px 15px;
-    justify-content: space-evenly;
+    margin: auto;
 }
 
-.filter_button {
-    padding: 30px;
-    width: 300px;
-    text-align: center;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid black;
-}
-
-.filter_button:hover {
-    background-color: #167a96;
+#filter_box a {
+    text-decoration: none;
     color: white;
-    cursor: pointer;
+}
+
+#filter_box a:hover {
+    color: #852525;
+}
+
+#filter_box input {
+    float: right;
+    padding: 15px;
+    width: 300px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 10px;
 }
 
 #list_table a:hover {
     font-size: 2em;
-    color: #167a96;
+    color: #852525;
+}
+
+/* habitat page */
+#habitat_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#habitat_box div {
+    width: 35%;
+    text-align: center;
+}
+
+#habitat_box img {
+    width: 100%;
+    border-radius: 25px;
+}
+
+#habitat_box table {
+    width: 55%;
+    margin: 0;
 }
 
 /* droid list */
@@ -312,7 +415,16 @@ th, td {
     font-size: 1.3em;
 }
 
+#droid_table a {
+    color: black;
+    text-decoration: none;
+}
+
+#droid_table a:hover {
+    color: #852525;
+}
+
 .droid_image {
-    width: 180px;
+    width: 100px;
     margin: auto;
 }

@@ -1,0 +1,47 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <script>
+        var data = <?php echo json_encode($habitats[0]['name'], JSON_HEX_TAG);?>;
+        document.write(data);
+    </script>
+
+    <div id="filter_box">
+        <h2 style="color: white; display: inline; margin-top: 30px">List of all habitats</h2>
+        <input type="text" placeholder="search">
+    </div>
+    <div class="list_background">
+        <table id="list_table">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Coordinate X</th>
+                <th>Coordinate Y</th>
+                <th>Max capacity</th>
+                <th>Actual capacity</th>
+                <th>Majordom</th>
+                <th>Info</th>
+            </thead>
+            <tbody>
+                {foreach $habitats as $habitat}
+                    <tr>
+                        <td>{$habitat['id_habitat']}</td>
+                        <td>{$habitat['name']}</td>
+                        <td>{$habitat['coordinate_x']}</td>
+                        <td>{$habitat['coordinate_y']}</td>
+                        <td>{$habitat['size']}</td>
+                        {if $habitat['size'] > $habitat['actual_capacity']}
+                            <td style="color:green">{$habitat['actual_capacity']}</td>
+                        {else}
+                            <td style="color:red">{$habitat['actual_capacity']}</td>
+                        {/if}
+                        <td>{$habitat['majordom']}</td>
+                        <td><a href="{link habitat_info, [id => $habitat['id_habitat']]}"><i class="fas fa-info-circle"></i></i></a>
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+{/block}

@@ -1,0 +1,55 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        <h2>Create new colonist</h2>
+        {if isset($message)}
+            <div class="message">{$message}</div>
+        {/if}
+        <form method="post">
+            <div id="edit_profile_box">
+                <div class="input_box">
+                    <label>Firstname</label>
+                    <input type="text" name="firstname" required>
+                </div>
+                <div class="input_box">
+                    <label>Lastname</label>
+                    <input type="text" name="lastname" required>
+                </div>
+                <div class="input_box">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="input_box">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="input_box">
+                    <label>Gender</label>
+                    <select name="gender">
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                            <option value="non-binary">non-binary</option>
+                    </select>
+                </div>
+                <div class="input_box">
+                    <label>Habitat</label>
+                    <select name="habitat">
+                        {foreach $habitats as $habitat}
+                            {if $habitat['id_habitat'] == $colonist['id_habitat']}
+                                <option value="{$habitat['id_habitat']}" selected="selected">{$habitat['name']} - {$habitat['number_of_colonists']}/{$habitat['size']}</option>
+                            {else}
+                                <option value="{$habitat['id_habitat']}">{$habitat['name']} - {$habitat['number_of_colonists']}/{$habitat['size']}</option>
+                            {/if}
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="input_box">
+                    <input type="submit" value="Create">
+                </div>
+            </div>
+        </form>
+    </div>
+{/block}

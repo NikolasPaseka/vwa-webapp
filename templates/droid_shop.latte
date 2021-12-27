@@ -4,6 +4,9 @@
 
 {block body}
     <div class="list_background">
+        {if isset($message)}
+            <div class="message">{$message}</div>
+        {/if}
         <table id="list_table">
             <thead>
                 <th><i class="fas fa-list"></i>Droid ID</th>
@@ -22,6 +25,11 @@
                         <td>{$droid['class']}</td>
                         <td>{$droid['condition']}</td>
                         <td>{$droid['price']}</td>
+                        <td>
+                            <a href="{link droid_shop_buy, [model => $droid['model'], id => $droid['id_droid']] }">
+                                <button>Buy</button>
+                            </a>
+                        </td>
                     </tr>
                 {/foreach}
             </tbody>

@@ -10,9 +10,14 @@
                     <tr>
                         <td><img class="droid_image" src="{$basePath}/images/droids/{$droid['model']}.png"></td>
                         <td>
-                            <form method="POST">
+                            {* <form method="POST">
                                 <input type="submit" name="model" value="{$droid['model']}">
-                            </form>
+                            </form> *}
+                            <a href="{link droid_shop, [model => $droid['model']]}">
+                                <h2>
+                                    {$droid['model']}
+                                </h2>
+                            </a>
                         </td>
                     </tr>
                 {/foreach}

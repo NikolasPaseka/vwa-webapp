@@ -3,19 +3,16 @@
 {block title}Proxima B{/block}
 
 {block body}
-    {if $logged_colonist['authorization'] == 'majordom' || $logged_colonist['authorization'] == 'majorplanet'}
-        <div class="filter_button_box">
-            <form method="POST">
-                <input type="hidden" name="list" value = 'all'>
-                <input type="submit" class="filter_button" value="All colonists">
-            </form>
-            <form method="POST">
-                <input type="hidden" name="list" value = 'same habitat'>
-                <input type="submit" class="filter_button" value="Colonists in same habitat">
-            </form>
+    {if $logged_colonist['authorization'] == 'majordom' || 
+        $logged_colonist['authorization'] == 'majorplanet'}
+        <div id="filter_box">
+            <h2><a href="{link colonist_list_all}"><i class="fas fa-filter"></i>All colonists</a></h2>
+            <h2 style="display: inline;"><a href="{link colonist_list_habitat}"><i class="fas fa-filter"></i>Colonists in same habitat</a></h2>
+            <input type="text" placeholder="search">
         </div>
     {/if}
     <div class="list_background">
+        <h2>{$filter}</h2>
         <table id="list_table">
             <thead>
                 <th>ID</th>
@@ -33,9 +30,7 @@
                         <td>{$colonist['firstname']}</td>
                         <td>{$colonist['lastname']}</td>
                         <td>{$colonist['username']}</td>
-                        {if $logged_colonist['authorization'] == 'majorplanet'}
-                            <td><a href="{link colonist_profile, [id => $colonist['id_colonist']]}"><i class="fas fa-id-badge"></i></a>
-                        {/if}
+                        <td><a href="{link colonist_profile, [id => $colonist['id_colonist']]}"><i class="fas fa-id-badge"></i></a>
                     </tr>
                 {/foreach}
             </tbody>

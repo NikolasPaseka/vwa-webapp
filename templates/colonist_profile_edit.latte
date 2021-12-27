@@ -1,0 +1,57 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        {if isset($message)}
+            <div class="message">{$message}</div>
+        {/if}
+        <form method="post">
+            <div id="edit_profile_box">
+                <div class="input_box">
+                    <label>Firstname</label>
+                    <input type="text" name="firstname" value="{$colonist['firstname']}">
+                </div>
+                <div class="input_box">
+                    <label>Lastname</label>
+                    <input type="text" name="lastname" value="{$colonist['lastname']}">
+                </div>
+                <div class="input_box">
+                    <label>Username</label>
+                    <input type="text" name="username" value="{$colonist['username']}">
+                </div>
+                <div class="input_box">
+                    <label>Gender</label>
+                    <select name="gender">
+                        <option value="{$colonist['gender']}" selected="selected">{$colonist['gender']}</option>
+                        {if $colonist['gender'] != 'male'}
+                            <option value="male">male</option>
+                        {/if}
+                        {if $colonist['gender'] != 'female'}
+                            <option value="female">female</option>
+                        {/if}
+                        {if $colonist['gender'] != 'non-binary'}
+                            <option value="non-binary">non-binary</option>
+                        {/if}
+                    </select>
+                </div>
+                <div class="input_box">
+                    <label>Habitat</label>
+                    <select name="habitat">
+                        {foreach $habitats as $habitat}
+                            {if $habitat['id_habitat'] == $colonist['id_habitat']}
+                                <option value="{$habitat['id_habitat']}" selected="selected">{$habitat['name']} - {$habitat['number_of_colonists']}/{$habitat['size']}</option>
+                            {else}
+                                <option value="{$habitat['id_habitat']}">{$habitat['name']} - {$habitat['number_of_colonists']}/{$habitat['size']}</option>
+                            {/if}
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="input_box">
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+{/block}

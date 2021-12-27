@@ -1,0 +1,44 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        <h2>Create new Habitat</h2>
+        {if isset($message)}
+            <div class="message">{$message}</div>
+        {/if}
+        <form method="post">
+            <div id="edit_profile_box">
+                <div class="input_box">
+                    <label>Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="input_box">
+                    <label>Assign colonist as majordom</label>
+                    <select name="colonist">
+                        {foreach $colonists as $colonist}
+                            <option value="{$colonist['id_colonist']}">{$colonist['firstname']} {$colonist['lastname']}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="input_box">
+                    <label>Size</label>
+                    <input type="text" name="size" required>
+                </div>
+                <div class="input_box">
+                    <label>Coordinate x</label>
+                    <input type="text" name="coordinate_x" required>
+                </div>
+                <div class="input_box">
+                    <label>Coordinate y</label>
+                    <input type="text" name="coordinate_y" required>
+                </div>
+                
+                <div class="input_box">
+                    <input type="submit" value="Create">
+                </div>
+            </div>
+        </form>
+    </div>
+{/block}

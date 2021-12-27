@@ -1,0 +1,76 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        <h2><i class="fas fa-robot"></i>Habitat</h2>
+        <div id="habitat_box">
+        <div>
+            <img src="{$basePath}/images/space_station.jpg">
+            {if $logged_colonist['id_habitat'] == $habitat['id_habitat'] or $logged_colonist['authorization'] == 'majorplanet'}
+                <h2><a href="{link habitat_info_edit, [id => $habitat['id_habitat']]}">Edit habitat info</a></h2>
+            {/if}
+        </div>
+        <table class="profile_table">
+            <tr>
+                <td><i class="fas fa-list"></i>Habitat ID</td>
+                <td>{$habitat['id_habitat']}</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-robot"></i>Name</td>
+                <td>{$habitat['name']}</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-fill-drip"></i>Coordiante X</td>
+                <td>{$habitat['coordinate_x']}</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-clipboard-list"></i>Coordinate Y</td>
+                <td>{$habitat['coordinate_y']}</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-clipboard-list"></i>Assigned majordom</td>
+                <td>{$habitat['majordom']}</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-tools"></i>Size</td>
+                <td>{$habitat['size']}</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-coins"></i>Actual capacity</td>
+                <td>{$habitat['actual_capacity']}</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="list_background">
+        <h2>Colonists living in {$habitat['name']}</h2>
+        <table id="list_table">
+            <thead>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Profile</th>
+                {if $logged_colonist['id_habitat'] == $habitat['id_habitat'] or $logged_colonist['authorization'] == 'majorplanet'}
+                    <th>Move out</th>
+                {/if}
+            </thead>
+            <tbody>
+                {foreach $colonists as $colonist}
+                    <tr>
+                        <td>{$colonist['id_colonist']}</td>
+                        <td>{$colonist['firstname']}</td>
+                        <td>{$colonist['lastname']}</td>
+                        <td>{$colonist['username']}</td>
+                        <td><a href="{link colonist_profile, [id => $colonist['id_colonist']]}"><i class="fas fa-id-badge"></i></a>
+                        {if $logged_colonist['id_habitat'] == $habitat['id_habitat'] or $logged_colonist['authorization'] == 'majorplanet'}
+                            <td><a href="{link habitat_move_out, [id => $habitat['id_habitat'], idc => $colonist['id_colonist']]}"><i class="fas fa-ban"></i></a>
+                        {/if}
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+{/block}

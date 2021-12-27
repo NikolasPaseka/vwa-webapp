@@ -3,65 +3,113 @@
 {block title}Proxima B{/block}
 
 {block body}
-    <div id="profile">
-    <div class="profile_block">
-        <img class="profile_image"src="{$basePath}/images/users/{$colonist['authorization']}.png">
-        <h2>{$colonist['firstname']} {$colonist['lastname']}</h2>
-    </div>
+    <div class="profile">
+        <div class="profile_block">
+            <img class="profile_image"src="{$basePath}/images/users/{$colonist['authorization']}.png">
+            <h2>{$colonist['firstname']} {$colonist['lastname']}</h2>
+            {if $logged_colonist['authorization'] == 'majorplanet' or
+                ($logged_colonist['authorization'] == 'majordom' and 
+                    $logged_colonist['id_habitat'] == $colonist['id_habitat'] and $colonist['authorization'] != 'majorplanet')}
+                <h2><a href="{link colonist_profile_edit, ['id' => $colonist['id_colonist']]}">Edit colonist info</a></h2>
+                {if $logged_colonist['id_colonist'] != $colonist['id_colonist'] or $logged_colonist['authorization'] == 'majorplanet'}
+                    <button onclick="showBox()">Add credits</button>
+                    <div id="credits_box">
+                        <form method="post" action="{link colonist_profile_addCredits, ['id' => $colonist['id_colonist']]}">
+                            <input type="text" name="credits" placeholder="Amount of credits">
+                            <input type="submit"></input>
+                        </form>
+                    </div>
+                {/if}
+            {/if}
+        </div>
 
-    <div class="profile_block">
-        <h2><i class="fas fa-info-circle"></i>General Information</h2>
-        <table id="profile_table">
-            <tr>
-                <td>ID</td>
-                <td>{$colonist['id_colonist']}</td>
-            </tr>
-            <tr>
-                <td>First Name</td>
-                <td>{$colonist['firstname']}</td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>{$colonist['lastname']}</td>
-            </tr>
-            <tr>
-                <td>Username</td>
-                <td>{$colonist['username']}</td>
-            </tr>
-            <tr>
-                <td>Authorization</td>
-                <td>{$colonist['authorization']}</td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td>{$colonist['gender']}</td>
-            </tr>
-            <tr>
-                <td>Habitat</td>
-                <td>{$colonist['name']}</td>
-            </tr>
-            <tr>
-                <td>Credits<i class="fas fa-coins"></i></td>
-                <td>{$colonist['credits']}</td>
-            </tr>
-        </table>
+        <div class="profile_block">
+            <h2><i class="fas fa-info-circle"></i>General Information</h2>
+            <table class="profile_table">
+                <tr>
+                    <td>Colonist ID</td>
+                    <td>{$colonist['id_colonist']}</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>{$colonist['firstname']}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>{$colonist['lastname']}</td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>{$colonist['username']}</td>
+                </tr>
+                <tr>
+                    <td>Authorization</td>
+                    <td>{$colonist['authorization']}</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>{$colonist['gender']}</td>
+                </tr>
+                <tr>
+                    <td>Habitat</td>
+                    <td>{$colonist['name']}</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-coins"></i>Credits</td>
+                    <td>{$colonist['credits']}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    </div>
-
-    {* <form method="POST" id="profile_form">
-        <label for="firstname">First Name: </label>
-        <input type="text" id="firstname" name="firstname" placeholder="{$colonist['firstname']}">
-        <label for="lastname">Last Name: </label>
-        <input type="text" id="lastname" name="lastname" placeholder="{$colonist['lastname']}">
-        <label for="firstname">Gender: </label>
-        <select id="gender" name="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="non-binary">Non-Binary</option>
-        </select>
-        <label for="firstname">Username: </label>
-        <input type="text" id="username" name="username" placeholder="{$colonist['username']}">
-        <label for="firstname">Password: </label>
-        <input type="password" id="password" name="password" placeholder="***">
-    </form> *}
+    {if $colonist['id_droid'] != NULL}
+        <div class="profile">
+            <div class="profile_block">
+                <img class="profile_image" src="{$basePath}/images/droids/{$colonist['model']}.png">
+                <h2>{$colonist['model']}</h2>
+                {if $logged_colonist['id_colonist'] == $colonist['id_colonist']}
+                    <a href="{link colonist_profile_sell_droid}"><button>Sell droid</button></a>
+                {/if}
+            </div>
+            <div class="profile_block">
+                <h2><i class="fas fa-robot"></i>Assigned droid</h2>
+                <table class="profile_table">
+                    <tr>
+                        <td><i class="fas fa-list"></i>Droid ID</td>
+                        <td>{$colonist['id_droid']}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-robot"></i>Model</td>
+                        <td>{$colonist['model']}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-fill-drip"></i>Color</td>
+                        <td>{$colonist['color']}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-clipboard-list"></i>Class</td>
+                        <td>{$colonist['class']}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-tools"></i>Condition</td>
+                        <td>{$colonist['condition']}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-coins"></i>Price</td>
+                        <td>{$colonist['price']}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {/if}
+    <script>
+        function showBox() {
+            var x = document.getElementById("credits_box");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
 {/block}
+

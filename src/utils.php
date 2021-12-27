@@ -1,24 +1,39 @@
 <?php
 
-function newLocation($app, $formData) {
-    if (!empty($formData['street_number']) or !empty($formData['street_name']) or !empty($formData['city']) 
-                    or !empty($formData['zip'])) {
-        $stmt = $app->db->prepare('
-            INSERT INTO location 
-            (street_name, street_number, zip, city) 
-            VALUES (:sname, :snumber, :zip, :city)
-        ');
-        $stmt->bindValue(':sname', empty($formData['street_name']) ? null : $formData['street_name']);
-        $stmt->bindValue(':snumber', empty($formData['street_number']) ? null : $formData['street_number']);
-        $stmt->bindValue(':zip', empty($formData['zip']) ? null : $formData['zip']);
-        $stmt->bindValue(':city', empty($formData['city']) ? null : $formData['city']);
+function reloadLoggedColonist($app) {
+    $logged_colonist = $_SESSION['logged_colonist'];
 
-        $stmt->execute();
-        $id_location = $app->db->lastInsertId();
-        return $id_location;
-    } else {
-        return null;
-    }
+    $stmt = $app->db->prepare('SELECT * FROM colonist WHERE id_colonist = :id');
+    $stmt->bindValue(':id', $logged_colonist['id_colonist']);
+    $stmt->execute();
+    $logged_colonist = $stmt->fetch();
+    
+    return $logged_colonist;
+}
+
+function checkHabitatCapacity($app, $idh) {
+    $stmt = $app->db->prepare('SELECT size, name, count(*) AS actual_capacity FROM colonist 
+                                JOIN habitat ON habitat.id_habitat = colonist.id_habitat 
+                                WHERE colonist.id_habitat = :idh');
+    $stmt->bindValue(":idh", $idh);
+    $stmt->execute();
+    $data = $stmt->fetch();
+
+    if ($data['actual_capacity'] < $data['size'])
+        return true;
+    else
+        return false;
+}
+
+function getHabitatCapacity($app, $idh) {
+    $stmt = $app->db->prepare('SELECT size, name, count(*) AS actual_capacity FROM colonist 
+                                JOIN habitat ON habitat.id_habitat = colonist.id_habitat 
+                                WHERE colonist.id_habitat = :idh');
+    $stmt->bindValue(":idh", $idh);
+    $stmt->execute();
+    $data = $stmt->fetch();
+
+    return $data['actual_capacity'];
 }
 
 ?>
