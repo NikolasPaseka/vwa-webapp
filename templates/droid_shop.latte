@@ -4,6 +4,8 @@
 
 {block body}
     <div class="list_background">
+        <h2>{$droids[0]['model']} droids</h2>
+        <h3 style="margin-left: 5%">Your credits: {$logged_colonist['credits']}</h3>
         {if isset($message)}
             <div class="message">{$message}</div>
         {/if}

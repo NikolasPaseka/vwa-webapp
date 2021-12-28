@@ -24,27 +24,17 @@
                 <div class="input_box">
                     <label>Gender</label>
                     <select name="gender">
-                        <option value="{$colonist['gender']}" selected="selected">{$colonist['gender']}</option>
-                        {if $colonist['gender'] != 'male'}
-                            <option value="male">male</option>
-                        {/if}
-                        {if $colonist['gender'] != 'female'}
-                            <option value="female">female</option>
-                        {/if}
-                        {if $colonist['gender'] != 'non-binary'}
-                            <option value="non-binary">non-binary</option>
-                        {/if}
+                        <option value="male" {if $colonist['gender'] == 'male'} selected {/if}>Male</option>
+                        <option value="female" {if $colonist['gender'] == 'female'} selected {/if}>Female</option>
                     </select>
                 </div>
                 <div class="input_box">
                     <label>Habitat</label>
                     <select name="habitat">
                         {foreach $habitats as $habitat}
-                            {if $habitat['id_habitat'] == $colonist['id_habitat']}
-                                <option value="{$habitat['id_habitat']}" selected="selected">{$habitat['name']} - {$habitat['number_of_colonists']}/{$habitat['size']}</option>
-                            {else}
-                                <option value="{$habitat['id_habitat']}">{$habitat['name']} - {$habitat['number_of_colonists']}/{$habitat['size']}</option>
-                            {/if}
+                            <option value="{$habitat['id_habitat']}" {if $colonist['id_habitat'] == $habitat['id_habitat']} selected {/if}>
+                                {$habitat['name']} - {$habitat['number_of_colonists']}/{$habitat['size']}
+                            </option>
                         {/foreach}
                     </select>
                 </div>

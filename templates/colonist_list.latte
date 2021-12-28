@@ -8,7 +8,10 @@
         <div id="filter_box">
             <h2><a href="{link colonist_list_all}"><i class="fas fa-filter"></i>All colonists</a></h2>
             <h2 style="display: inline;"><a href="{link colonist_list_habitat}"><i class="fas fa-filter"></i>Colonists in same habitat</a></h2>
-            <input type="text" placeholder="search">
+            <form method="get">
+                <input type="text" name="search" placeholder="search">
+                <input type="submit" value="OK">
+            </form>
         </div>
     {/if}
     <div class="list_background">

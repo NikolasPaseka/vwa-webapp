@@ -1,0 +1,52 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div class="list_background">
+        <h2>Create new droid</h2>
+        {if isset($message)}
+            <div class="message">{$message}</div>
+        {/if}
+        <form method="post">
+            <div id="edit_profile_box">
+                <div class="input_box">
+                    <label>Model</label>
+                    <select name="model">
+                        <option value="Q9-series">Q9-series</option>
+                        <option value="Q7-series">Q7-series</option>
+                        <option value="P2-series">P2-series</option>
+                        <option value="R4-series">R4-series</option>
+                        <option value="R2-series">R2-series</option>
+                        <option value="T7-series">T7-series</option>                        
+                    </select>
+                </div>
+                <div class="input_box">
+                    <label>Color</label>
+                    <input type="text" name="color" required>
+                </div>
+                <div class="input_box">
+                    <label>Class</label>
+                    <input type="text" name="class" required>
+                </div>
+                <div class="input_box">
+                    <label>Condition</label>
+                    <select name="condition">
+                        <option value="Factory new">Factory new</option>
+                        <option value="Minimal wear">Minimal wear</option>
+                        <option value="Field tested">Field tested</option>
+                        <option value="Well worn">Well worn</option>
+                        <option value="Battle scarred">Battle scarred</option>
+                    </select>
+                </div>
+                <div class="input_box">
+                    <label>Price</label>
+                    <input type="text" name="price" required>
+                </div>
+                <div class="input_box">
+                    <input type="submit" value="Create">
+                </div>
+            </div>
+        </form>
+    </div>
+{/block}

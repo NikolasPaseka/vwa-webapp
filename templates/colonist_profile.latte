@@ -5,21 +5,24 @@
 {block body}
     <div class="profile">
         <div class="profile_block">
-            <img class="profile_image"src="{$basePath}/images/users/{$colonist['authorization']}.png">
+            <img class="profile_image"src="{$basePath}/images/users/{$colonist['authorization']}/{$colonist['gender']}.jpg">
             <h2>{$colonist['firstname']} {$colonist['lastname']}</h2>
             {if $logged_colonist['authorization'] == 'majorplanet' or
                 ($logged_colonist['authorization'] == 'majordom' and 
                     $logged_colonist['id_habitat'] == $colonist['id_habitat'] and $colonist['authorization'] != 'majorplanet')}
-                <h2><a href="{link colonist_profile_edit, ['id' => $colonist['id_colonist']]}">Edit colonist info</a></h2>
-                {if $logged_colonist['id_colonist'] != $colonist['id_colonist'] or $logged_colonist['authorization'] == 'majorplanet'}
-                    <button onclick="showBox()">Add credits</button>
-                    <div id="credits_box">
-                        <form method="post" action="{link colonist_profile_addCredits, ['id' => $colonist['id_colonist']]}">
-                            <input type="text" name="credits" placeholder="Amount of credits">
-                            <input type="submit"></input>
-                        </form>
-                    </div>
-                {/if}
+                    <h3><a href="{link colonist_profile_edit, ['id' => $colonist['id_colonist']]}">Edit colonist info</a></h3>
+            {/if}
+            {if $colonist['id_colonist'] == $logged_colonist['id_colonist']} 
+                <h3><a href="{link colonist_change_password}">Change password</a></h3>
+            {/if}
+            {if $logged_colonist['authorization'] == 'majorplanet' OR ($logged_colonist['authorization'] == 'majordom' AND $logged_colonist['id_habitat'] == $colonist['id_habitat'] AND $logged_colonist['id_colonist'] != $colonist['id_colonist'])}
+                <button onclick="showBox()">Add credits</button>
+                <div id="credits_box">
+                    <form method="post" action="{link colonist_profile_addCredits, ['id' => $colonist['id_colonist']]}">
+                        <input type="text" name="credits" placeholder="Amount of credits">
+                        <input type="submit"></input>
+                    </form>
+                </div>
             {/if}
         </div>
 

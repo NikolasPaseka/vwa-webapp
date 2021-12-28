@@ -8,10 +8,9 @@
     <script src="https://kit.fontawesome.com/a6c2ca071f.js" crossorigin="anonymous"></script>
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-    
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {ifset meta}{include meta}{/ifset}
@@ -24,8 +23,8 @@
             {if $logged_colonist['authorization'] != 'colonist'}
                 <li class="dropdown_button" onclick="toogleVisibility1()"><p class="navbar_link"><i class="fas fa-users"></i>Colonists<i class="fas fa-sort-down"></i></p>
                     <ul id="dropdown_content1">
-                        <li><a class="navbar_sublink" href="{link colonist_list_habitat}"><i class="fas fa-greater-than"></i>View colonists</a></li>
-                        <li><a class="navbar_sublink" href="{link colonist_new}"><i class="fas fa-greater-than"></i>New colonist</a></li>
+                        <li><a class="navbar_sublink" href="{link colonist_list_habitat}"><i class="fas fa-caret-right"></i>View colonists</a></li>
+                        <li><a class="navbar_sublink" href="{link colonist_new}"><i class="fas fa-caret-right"></i>New colonist</a></li>
                     </ul>
                 </li>
             {else}
@@ -34,13 +33,23 @@
             {if $logged_colonist['authorization'] != 'colonist'}
                 <li class="dropdown_button" onclick="toogleVisibility2()"><p class="navbar_link"><i class="fas fa-hotel"></i>Habitats<i class="fas fa-sort-down"></i></p>
                     <ul id="dropdown_content2">
-                        <li><a class="navbar_sublink" href="{link habitats_list}"><i class="fas fa-greater-than"></i>View habitats</a></li>
-                        <li><a class="navbar_sublink" href="{link habitat_info, [id => $logged_colonist['id_habitat']]}"><i class="fas fa-greater-than"></i>Manage my habitat</a></li>
-                        <li><a class="navbar_sublink" href="{link habitat_new}"><i class="fas fa-greater-than"></i>New habitat</a></li>
+                        <li><a class="navbar_sublink" href="{link habitats_list}"><i class="fas fa-caret-right"></i>View habitats</a></li>
+                        <li><a class="navbar_sublink" href="{link habitat_info, [id => $logged_colonist['id_habitat']]}"><i class="fas fa-caret-right"></i>Manage my habitat</a></li>
+                        {if $logged_colonist['authorization'] == 'majorplanet'}
+                            <li><a class="navbar_sublink" href="{link habitat_new}"><i class="fas fa-caret-right"></i>New habitat</a></li>
+                        {/if}
                     </ul>
                 </li>
             {/if}
-            <li><a class="navbar_link" href="{link droid_list}"><i class="fas fa-robot"></i>Droids</a></li>
+            {if $logged_colonist['authorization'] != 'colonist'}
+                <li class="dropdown_button" onclick="toogleVisibility3()"><p class="navbar_link"><i class="fas fa-robot"></i>Droids<i class="fas fa-sort-down"></i></p>
+                <ul id="dropdown_content3">
+                    <li><a class="navbar_sublink" href="{link droid_list}"><i class="fas fa-caret-right"></i>Droid shop</a></li>
+                    <li><a class="navbar_sublink" href="{link droid_new}"><i class="fas fa-caret-right"></i>Create new droid</a></li>
+                </ul>
+            {else}
+                <li><a class="navbar_link" href="{link droid_list}"><i class="fas fa-robot"></i>Droids</a></li>
+            {/if}
             <li><div class="log_button">
                 <a class="navbar_link" href="{link colonist_profile, [id => $logged_colonist['id_colonist']]}">{$logged_colonist['username']}</a>
                 <a class="navbar_link" href="{link logout}"><i class="fas fa-sign-out-alt"></i>Log out</a>
@@ -63,6 +72,15 @@
 
         function toogleVisibility2() {
             var x = document.getElementById("dropdown_content2");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+
+        function toogleVisibility3() {
+            var x = document.getElementById("dropdown_content3");
             if (x.style.display === "block") {
                 x.style.display = "none";
             } else {

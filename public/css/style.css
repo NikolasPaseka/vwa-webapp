@@ -39,11 +39,20 @@ h1 {
     text-align: center;
 }
 
-h2, p {
+h2, h3, p {
     font-family: 'Open Sans', sans-serif;
 }
 
-h2 {
+h2 a, h3 a {
+    text-decoration: none;
+    color: black;
+}
+
+h2 a:hover, h3 a:hover {
+    color: #852525;
+}
+
+h2,h3 {
     padding: 10px;
 }
 
@@ -136,16 +145,11 @@ input:focus {
 }
 
 
-#dropdown_content1 {
+#dropdown_content1, #dropdown_content2, #dropdown_content3 {
     display: none;
     list-style-type: none;
 }
 
-#dropdown_content2 {
-    display: none;
-    list-style-type: none;
-    color: blue;
-}
 
 /* .dropdown_button:hover .dropdown_content {
     display: block;
@@ -232,6 +236,7 @@ th, td {
 #login-background input[type=submit] {
     background-color: #22252D;
     color: white;
+    cursor: pointer;
 }
 
 
@@ -296,14 +301,15 @@ th, td {
     }
 }
 
-.profile_block h2 {
+.profile_block h2, .profile_block h3 {
     text-align: center;
 }
 
 .profile_image {
     margin: 5% auto;
     display: block;
-    width: 25%;
+    width: 250px;
+    border-radius: 20px;
 }
 
 /* colonist profile edit */
@@ -371,13 +377,21 @@ th, td {
     color: #852525;
 }
 
-#filter_box input {
+#filter_box form {
     float: right;
+}
+
+#filter_box input[type=text] {
     padding: 15px;
     width: 300px;
     border-radius: 5px;
     border: 0;
-    margin-bottom: 10px;
+}
+
+#filter_box input[type=submit] {
+    padding: 15px;
+    border-radius: 5px;
+    border: 0;
 }
 
 #list_table a:hover {

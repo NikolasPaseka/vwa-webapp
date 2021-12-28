@@ -14,6 +14,17 @@
                     <input type="text" name="name" value="{$habitat['name']}">
                 </div>
                 <div class="input_box">
+                <label>Assigned majordom</label>
+                    <select name="colonist">
+                        {foreach $colonists as $colonist}
+                            <option value="{$colonist['id_colonist']}" {if $colonist['id_habitat'] == $habitat['id_habitat'] and $colonist['authorization'] == 'majordom'} selected {/if}>
+                                {$colonist['firstname']} {$colonist['lastname']}
+                                {if $colonist['authorization'] == 'majordom'} – majordom of: {$colonist['name']}{/if}
+                            </option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="input_box">
                     <label>Coordinate X</label>
                     <input type="text" name="coordinate_x" value="{$habitat['coordinate_x']}">
                 </div>
