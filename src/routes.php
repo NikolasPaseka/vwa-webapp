@@ -85,6 +85,17 @@ $app->group('', function() use($app) {
 
     // profile page of user
     $app->get('/colonist/{id}/profile', function (Request $request, Response $response, $args) {
+        $logged_colonist = $_SESSION['logged_colonist'];
+        if ($logged_colonist['authorization'] == 'colonist') {
+            $stmt = $this->db->prepare('SELECT id_habitat FROM colonist WHERE id_colonist = :id');
+            $stmt->bindValue(':id', $args['id']);
+            $stmt->execute();
+            $check = $stmt->fetch();
+
+            if ($check['id_habitat'] != $logged_colonist['id_habitat']) {
+                return $response->withHeader('Location', $this->router->pathFor('index'));
+            }
+        } 
         $stmt = $this->db->prepare('SELECT * FROM colonist C 
                                     LEFT JOIN habitat H ON C.id_habitat = H.id_habitat
                                     LEFT JOIN droid D on C.id_droid = D.id_droid

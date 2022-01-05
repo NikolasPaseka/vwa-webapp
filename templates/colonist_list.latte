@@ -37,6 +37,9 @@
                         {if $colonist['name']}
                             <td>{$colonist['name']}</td>
                         {/if}
+                        {if $colonists[0]['name']}
+                            <td>-</td>
+                        {/if}
                         <td><a href="{link colonist_profile, [id => $colonist['id_colonist']]}"><i class="fas fa-id-badge"></i></a>
                     </tr>
                 {/foreach}

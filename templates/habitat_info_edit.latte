@@ -4,6 +4,7 @@
 
 {block body}
     <div class="list_background">
+        <h2>Edit: {$habitat['name']}</h2>
         {if isset($message)}
             <div class="message">{$message}</div>
         {/if}
@@ -37,7 +38,8 @@
                     <input type="text" name="size" value="{$habitat['size']}">
                 </div>
                 <div class="input_box">
-                    <input type="submit" value="Submit">
+                    <label>Edit</label>
+                    <input type="submit" value="Edit">
                 </div>
             </div>
         </form>

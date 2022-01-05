@@ -14,6 +14,9 @@
                     $logged_colonist['id_habitat'] == $colonist['id_habitat'] and $colonist['authorization'] != 'majorplanet')}
                     <h3><a href="{link colonist_profile_edit, ['id' => $colonist['id_colonist']]}">Edit colonist info</a></h3>
             {/if}
+            {if $logged_colonist['authorization'] == 'majordom' and $colonist['id_habitat'] == NULL}
+                <h3><a href="{link colonist_profile_edit, ['id' => $colonist['id_colonist']]}">Edit colonist info</a></h3>
+            {/if}
             {if $colonist['id_colonist'] == $logged_colonist['id_colonist']} 
                 <h3><a href="{link colonist_change_password}">Change password</a></h3>
             {/if}
