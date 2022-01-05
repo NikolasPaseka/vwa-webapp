@@ -3,28 +3,29 @@
 {block title}Proxima B{/block}
 
 {block body}
-    <script>
+    {* <script>
         var data = <?php echo json_encode($habitats[0]['name'], JSON_HEX_TAG);?>;
         document.write(data);
-    </script>
+        console.log(data);
+    </script> *}
 
-    <div id="filter_box">
+    <div id="filter_box" style="margin-top: 20px">
         <h2 style="color: white; display: inline; margin-top: 30px">List of all habitats</h2>
         <form method="get">
             <input type="text" name="search" placeholder="search">
             <input type="submit" value="OK">
         </form>
     </div>
-    <div class="list_background">
+    <div class="list_background" style="padding-top: 40px">
         <table id="list_table">
             <thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Coordinate X</th>
-                <th>Coordinate Y</th>
-                <th>Max capacity</th>
-                <th>Actual capacity</th>
-                <th>Majordom</th>
+                <th><i class="fas fa-list"></i>ID</th>
+                <th><i class="fas fa-map-signs"></i>Name</th>
+                <th><i class="fas fa-map-marker-alt"></i>Coordinate X</th>
+                <th><i class="fas fa-map-marker-alt"></i>Coordinate Y</th>
+                <th><i class="fas fa-warehouse"></i>Max capacity</th>
+                <th><i class="fas fa-users"></i>Actual capacity</th>
+                <th><i class="fas fa-user-cog"></i>Majordom</th>
                 <th>Info</th>
             </thead>
             <tbody>
@@ -40,7 +41,7 @@
                         {else}
                             <td style="color:red">{$habitat['actual_capacity']}</td>
                         {/if}
-                        <td>{$habitat['majordom']}</td>
+                        <td>{$habitat['majordomf']} {$habitat['majordoml']}</td>
                         <td><a href="{link habitat_info, [id => $habitat['id_habitat']]}"><i class="fas fa-info-circle"></i></i></a>
                     </tr>
                 {/foreach}

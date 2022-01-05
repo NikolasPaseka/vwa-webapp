@@ -7,6 +7,8 @@
         <div class="profile_block">
             <img class="profile_image"src="{$basePath}/images/users/{$colonist['authorization']}/{$colonist['gender']}.jpg">
             <h2>{$colonist['firstname']} {$colonist['lastname']}</h2>
+            <div class="border">
+            </div>
             {if $logged_colonist['authorization'] == 'majorplanet' or
                 ($logged_colonist['authorization'] == 'majordom' and 
                     $logged_colonist['id_habitat'] == $colonist['id_habitat'] and $colonist['authorization'] != 'majorplanet')}
@@ -16,11 +18,11 @@
                 <h3><a href="{link colonist_change_password}">Change password</a></h3>
             {/if}
             {if $logged_colonist['authorization'] == 'majorplanet' OR ($logged_colonist['authorization'] == 'majordom' AND $logged_colonist['id_habitat'] == $colonist['id_habitat'] AND $logged_colonist['id_colonist'] != $colonist['id_colonist'])}
-                <button onclick="showBox()">Add credits</button>
+                <h3><a onclick="showBox()" style="cursor: pointer">Add credits</a></h3>
                 <div id="credits_box">
                     <form method="post" action="{link colonist_profile_addCredits, ['id' => $colonist['id_colonist']]}">
                         <input type="text" name="credits" placeholder="Amount of credits">
-                        <input type="submit"></input>
+                        <input type="submit" value="Add">
                     </form>
                 </div>
             {/if}
@@ -30,31 +32,31 @@
             <h2><i class="fas fa-info-circle"></i>General Information</h2>
             <table class="profile_table">
                 <tr>
-                    <td>Colonist ID</td>
+                    <td><i class="fas fa-list"></i>Colonist ID</td>
                     <td>{$colonist['id_colonist']}</td>
                 </tr>
                 <tr>
-                    <td>First Name</td>
+                    <td><i class="fas fa-signature"></i>First Name</td>
                     <td>{$colonist['firstname']}</td>
                 </tr>
                 <tr>
-                    <td>Last Name</td>
+                    <td><i class="fas fa-signature"></i>Last Name</td>
                     <td>{$colonist['lastname']}</td>
                 </tr>
                 <tr>
-                    <td>Username</td>
+                    <td><i class="fas fa-user"></i>Username</td>
                     <td>{$colonist['username']}</td>
                 </tr>
                 <tr>
-                    <td>Authorization</td>
+                    <td><i class="fas fa-unlock-alt"></i>Authorization</td>
                     <td>{$colonist['authorization']}</td>
                 </tr>
                 <tr>
-                    <td>Gender</td>
+                    <td><i class="fas fa-venus-mars"></i>Gender</td>
                     <td>{$colonist['gender']}</td>
                 </tr>
                 <tr>
-                    <td>Habitat</td>
+                    <td><i class="fas fa-hotel"></i>Habitat</td>
                     <td>{$colonist['name']}</td>
                 </tr>
                 <tr>
@@ -70,7 +72,9 @@
                 <img class="profile_image" src="{$basePath}/images/droids/{$colonist['model']}.png">
                 <h2>{$colonist['model']}</h2>
                 {if $logged_colonist['id_colonist'] == $colonist['id_colonist']}
-                    <a href="{link colonist_profile_sell_droid}"><button>Sell droid</button></a>
+                    <div class="border">
+                    </div>
+                    <h3><a href="{link colonist_profile_sell_droid}">Sell droid</a></h3>
                 {/if}
             </div>
             <div class="profile_block">

@@ -23,7 +23,7 @@
             {if $logged_colonist['authorization'] != 'colonist'}
                 <li class="dropdown_button" onclick="toogleVisibility1()"><p class="navbar_link"><i class="fas fa-users"></i>Colonists<i class="fas fa-sort-down"></i></p>
                     <ul id="dropdown_content1">
-                        <li><a class="navbar_sublink" href="{link colonist_list_habitat}"><i class="fas fa-caret-right"></i>View colonists</a></li>
+                        <li><a class="navbar_sublink" href="{link colonist_list_all}"><i class="fas fa-caret-right"></i>View colonists</a></li>
                         <li><a class="navbar_sublink" href="{link colonist_new}"><i class="fas fa-caret-right"></i>New colonist</a></li>
                     </ul>
                 </li>
@@ -34,6 +34,7 @@
                 <li class="dropdown_button" onclick="toogleVisibility2()"><p class="navbar_link"><i class="fas fa-hotel"></i>Habitats<i class="fas fa-sort-down"></i></p>
                     <ul id="dropdown_content2">
                         <li><a class="navbar_sublink" href="{link habitats_list}"><i class="fas fa-caret-right"></i>View habitats</a></li>
+                        <li><a class="navbar_sublink" href="{link habitats_map}"><i class="fas fa-caret-right"></i>Habitats map</a></li>
                         <li><a class="navbar_sublink" href="{link habitat_info, [id => $logged_colonist['id_habitat']]}"><i class="fas fa-caret-right"></i>Manage my habitat</a></li>
                         {if $logged_colonist['authorization'] == 'majorplanet'}
                             <li><a class="navbar_sublink" href="{link habitat_new}"><i class="fas fa-caret-right"></i>New habitat</a></li>

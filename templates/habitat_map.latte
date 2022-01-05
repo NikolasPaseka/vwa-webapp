@@ -1,0 +1,41 @@
+{extends layout.latte}
+
+{block title}Proxima B{/block}
+
+{block body}
+    <div id="home" style="background-color: #15161b;">
+        <h1 style="font-size: 1.5em">Map of habitats</h1>
+    </div>
+    <canvas id="canvas" width="1200" height="800"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const width = canvas.width;
+        const height = canvas.height;
+
+        ctx.fillStyle = "#852525";
+        ctx.font = "bold 20px Open Sans";
+
+        const names = [];
+        const coorx = [];
+        const coory = [];
+        <?php foreach ($habitats as $habitat) { ?> 
+            coorx.push(<?php echo json_encode($habitat['coordinate_x'], JSON_HEX_TAG);?>);
+            coory.push(<?php echo json_encode($habitat['coordinate_y'], JSON_HEX_TAG);?>);
+            names.push(<?php echo json_encode($habitat['name'], JSON_HEX_TAG);?>);
+            
+            <?php
+        }?>
+        for (let i = 0; i < coorx.length; i++) {
+            const cx = Math.round(coorx.at(i)/(width/800));
+            const cy = Math.round(coory.at(i)/(height/500));
+        
+            ctx.fillRect(cx, cy, 10, 10);
+            ctx.fillText(names.at(i), cx-(names.at(i).length*4), cy-10);
+        }
+        
+        //ctx.fillRect(10, 10, 5, 5);
+    </script>
+{/block}

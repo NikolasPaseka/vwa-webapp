@@ -89,6 +89,7 @@ input:focus {
 
     #navbar ul li {
         margin: 20px 0;
+        text-align: center;
     }
 
     main {
@@ -150,12 +151,6 @@ input:focus {
     list-style-type: none;
 }
 
-
-/* .dropdown_button:hover .dropdown_content {
-    display: block;
-    padding: 15px;
-} */
-
 .log_button {
     text-align: center;
     padding: 10px;
@@ -177,8 +172,54 @@ input:focus {
 
 .slide-image {
     height: 100vh;
-    background-image: url("../images/background-2.jpg");
+    background-image: url("../images/background-4.jfif");
     background-size: cover;
+}
+
+
+#home_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    height: 90vh;
+    margin: auto;
+}
+
+@media only screen and (max-width: 800px) {
+    .slide-image {
+        background: linear-gradient(90deg, rgba(1,14,40,1) 0%, rgba(2,15,42,1) 49%, rgba(4,30,84,1) 100%);
+        height: auto;
+        min-height: 100vh;
+    }
+    #home_box {
+        height: auto;
+        position: relative;
+        margin: auto;
+        top: 0; left: 0;
+    }
+}
+
+.home_board {
+    width: 280px;
+    height: 180px;
+    background-color: #22252D;
+    margin: 50px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.home_board h3 {
+    margin: 0 20px 0 20px;
+    font-weight: 400;
+    font-size: 1.3em;
+}
+
+.home_board i {
+    font-size: 1.3em;
+    color: #852525;
 }
 
 table, td, th {  
@@ -268,8 +309,24 @@ th, td {
     padding: 20px 15px 60px 15px;
 }
 
+.profile_block input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.border {
+    width: 100%;
+    border-top: 2px solid rgb(117, 117, 117);
+}
+
 #credits_box {
     display: none;
+    width: 100%;
+}
+
+#credits_box form {
+    display: flex;
+    justify-content: center;
 }
 
 .profile_table td:nth-of-type(1) {
@@ -298,6 +355,7 @@ th, td {
     .profile_block:nth-of-type(2) {
         width: 90%;
         max-height: auto;
+        margin-top: 20px;
     }
 }
 
@@ -318,17 +376,19 @@ th, td {
     display: flex;
     margin: auto;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .input_box {
-    flex: 0 0 45%;
+    /* flex: 0 0 45%; */
+    width: 40%;
     margin: 20px 0;
 }
 
 .input_box input {
-    padding: 20px;
-    width: 90%;
+    padding: 20px 10px;
+    width: 95%;
+    /* width: 25vw; */
 }
 
 .input_box select {
@@ -379,6 +439,12 @@ th, td {
 
 #filter_box form {
     float: right;
+}
+
+@media only screen and (max-width: 1200px) {
+    #filter_box form {
+        float: none;
+    }
 }
 
 #filter_box input[type=text] {
@@ -441,4 +507,16 @@ th, td {
 .droid_image {
     width: 100px;
     margin: auto;
+}
+
+/* habitat map */
+#canvas {
+    background-image: url("../images/map_pattern.png");
+    background-size: cover;
+    border-radius: 15px;
+    /* width: 30%;  */
+    margin: auto;
+    display: block;
+
+    margin-top: 3%;
 }

@@ -18,13 +18,14 @@
         <h2>{$filter}</h2>
         <table id="list_table">
             <thead>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                {if $logged_colonist['authorization'] == 'majorplanet'}
-                    <th>Profile</th>
+                <th><i class="fas fa-list"></i>ID</th>
+                <th><i class="fas fa-signature"></i>First Name</th>
+                <th><i class="fas fa-signature"></i>Last Name</th>
+                <th><i class="fas fa-user"></i>Username</th>
+                {if $colonists[0]['name']}
+                    <th><i class="fas fa-hotel"></i>Habitat</th>
                 {/if}
+                <th><i class="fas fa-id-badge"></i>Profile</th>
             </thead>
             <tbody>
                 {foreach $colonists as $colonist}
@@ -33,6 +34,9 @@
                         <td>{$colonist['firstname']}</td>
                         <td>{$colonist['lastname']}</td>
                         <td>{$colonist['username']}</td>
+                        {if $colonist['name']}
+                            <td>{$colonist['name']}</td>
+                        {/if}
                         <td><a href="{link colonist_profile, [id => $colonist['id_colonist']]}"><i class="fas fa-id-badge"></i></a>
                     </tr>
                 {/foreach}

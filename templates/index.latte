@@ -4,5 +4,50 @@
 
 {block body}
     <div class="slide-image">
+        <div id="home" style="background-color: #15161b;">
+            <h1 style="font-size: 1.5em">Home page</h1>
+        </div>
+        <div id="home_box">
+            <div class="home_board">
+                <i class="fas fa-user-astronaut"></i>
+                <h3>Number of colonists</h3>
+                <h2>{$colonists['res']}</h2>
+            </div>
+            <div class="home_board">
+                <i class="fas fa-mars"></i>
+                <h3>Male colonists</h3>
+                <h2>{$males['res']}</h2>
+            </div>
+            <div class="home_board">
+                <i class="fas fa-venus"></i>
+                <h3>Female colonists</h3>
+                <h2>{$females['res']}</h2>
+            </div>
+            <div class="home_board">
+                <i class="fas fa-user-times"></i>
+                <h3>Colonists without habitat</h3>
+                <h2>{$homeless['res']}</h2>
+            </div>
+            <div class="home_board">
+                <i class="fas fa-hotel"></i>
+                <h3>Number of habitats</h3>
+                <h2>{$habitats['res']}</h2>
+            </div>
+            <div class="home_board">
+                <i class="fas fa-hotel"></i>
+                <h3>Full habitats</h3>
+                <h2>{$habitats_full['res']}</h2>
+            </div>
+            <div class="home_board">
+                <i class="fas fa-robot"></i>
+                <h3>Available droids</h3>
+                <h2>{$droids_available['res']}</h2>
+            </div>
+            <div class="home_board">
+                <i class="fas fa-coins"></i>
+                <h3>Cost of most valuable droid</h3>
+                <h2>{$droids_maxPrice['max']}</h2>
+            </div>
+        </div>
     </div>
 {/block}
